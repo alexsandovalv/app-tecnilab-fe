@@ -8,6 +8,7 @@ import Footer from '@/components/ui/Footer';
 import Header from '@/components/ui/Header';
 import { Box } from '@mui/material';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
   title: 'Tecnilab - Servicio Técnico Apple Premium',
@@ -43,6 +44,10 @@ export default async function RootLayout({
         </StoreProvider>
         <SpeedInsights
           sampleRate={1}
+          debug={false}
+        />
+        <Analytics
+          mode="production"
           debug={false}
         />
       </body>
