@@ -1,16 +1,16 @@
 'use client';
 
-import {AppBar, Toolbar, Container, Box, Button, Stack, IconButton, Menu, MenuItem} from '@mui/material';
+import {AppBar, Toolbar, Container, Box, Button, Stack, IconButton, Menu, MenuItem, Drawer, List, ListItem, ListItemButton, ListItemText, Divider} from '@mui/material';
 import Link from 'next/link';
-import { ShoppingBagOutlined, LanguageOutlined } from "@mui/icons-material";
+import { ShoppingBagOutlined, LanguageOutlined, MenuOutlined, CloseOutlined } from "@mui/icons-material";
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 const navItems = [
   { key: 'home', href: '#hero' },
-  { key: 'accessories', href: '#accessories' },
   { key: 'service', href: '#service' },
+  { key: 'accessories', href: '#accessories' },
   { key: 'contact', href: '#contact' },
 ];
 
@@ -21,6 +21,7 @@ export default function Header() {
   const pathname = usePathname();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,9 +56,77 @@ export default function Header() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    setMobileMenuOpen(false);
   };
 
   return (
+    <>
+      {/* Mobile Drawer */}
+      <Drawer
+        anchor="right"
+        open={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        sx={{
+          '& .MuiDrawer-paper': {
+            width: '100%',
+            bgcolor: '#000',
+            color: '#fff',
+          },
+        }}
+      >
+        <Box sx={{ p: 2 }}>
+          <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 3 }}>
+            <Link href={`/${locale}`} onClick={() => setMobileMenuOpen(false)}>
+              <Box
+                component="img"
+                src="https://tecnilab.pe/wp-content/uploads/2021/02/cropped-cropped-TECNILAB-LOGO1.png"
+                alt="Tecnilab Logo"
+                sx={{ height: 40 }}
+              />
+            </Link>
+            <IconButton onClick={() => setMobileMenuOpen(false)} sx={{ color: '#fff' }}>
+              <CloseOutlined />
+            </IconButton>
+          </Stack>
+          <Divider sx={{ borderColor: '#333', mb: 2 }} />
+          <List>
+            {navItems.map((item) => (
+              <ListItem key={item.key} disablePadding>
+                <ListItemButton onClick={() => scrollToSection(item.href)}>
+                  <ListItemText
+                    primary={t(item.key)}
+                    primaryTypographyProps={{
+                      fontSize: '1.2rem',
+                      fontWeight: 500
+                    }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          <Divider sx={{ borderColor: '#333', my: 2 }} />
+          <Stack spacing={2} sx={{ px: 2 }}>
+            <Button
+              fullWidth
+              variant="outlined"
+              onClick={() => {
+                handleLanguageChange(locale === 'es' ? 'en' : 'es');
+                setMobileMenuOpen(false);
+              }}
+              sx={{
+                color: '#fff',
+                borderColor: '#fff',
+                textTransform: 'none',
+                py: 1.5
+              }}
+            >
+              {locale === 'es' ? 'English' : 'Español'}
+            </Button>
+          </Stack>
+        </Box>
+      </Drawer>
+
+    {/* AppBar */}
     <AppBar
       position={scrolled ? 'fixed' : 'absolute'}
       elevation={scrolled ? 4 : 0}
@@ -93,38 +162,52 @@ export default function Header() {
           </Stack>
 
           <Stack direction="row" spacing={1} alignItems="center">
+            {/* Desktop Icons */}
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
+              <IconButton
+                size="small"
+                color="inherit"
+                onClick={handleLanguageClick}
+                sx={{ color: '#fff' }}
+              >
+                <LanguageOutlined />
+              </IconButton>
+              <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleLanguageClose}
+              >
+                <MenuItem
+                  onClick={() => handleLanguageChange('es')}
+                  selected={locale === 'es'}
+                >
+                  Español
+                </MenuItem>
+                <MenuItem
+                  onClick={() => handleLanguageChange('en')}
+                  selected={locale === 'en'}
+                >
+                  English
+                </MenuItem>
+              </Menu>
+              <IconButton size="small" color="inherit">
+                <ShoppingBagOutlined />
+              </IconButton>
+            </Box>
+
+            {/* Mobile Menu Button */}
             <IconButton
               size="small"
               color="inherit"
-              onClick={handleLanguageClick}
-              sx={{ color: '#fff' }}
+              onClick={() => setMobileMenuOpen(true)}
+              sx={{ display: { xs: 'flex', md: 'none' }, color: '#fff' }}
             >
-              <LanguageOutlined />
-            </IconButton>
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleLanguageClose}
-            >
-              <MenuItem
-                onClick={() => handleLanguageChange('es')}
-                selected={locale === 'es'}
-              >
-                Español
-              </MenuItem>
-              <MenuItem
-                onClick={() => handleLanguageChange('en')}
-                selected={locale === 'en'}
-              >
-                English
-              </MenuItem>
-            </Menu>
-            <IconButton size="small" color="inherit">
-              <ShoppingBagOutlined />
+              <MenuOutlined />
             </IconButton>
           </Stack>
         </Toolbar>
       </Container>
     </AppBar>
+    </>
   );
 }
