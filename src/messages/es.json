@@ -1,0 +1,53 @@
+{
+  "Common": {
+    "addToCart": "Comprar ahora",
+    "viewMore": "Explorar",
+    "consult": "Consultar",
+    "new": "Nuevo",
+    "offer": "Oferta"
+  },
+  "Header": {
+    "home": "Inicio",
+    "service": "Servicio Técnico",
+    "accessories": "Accesorios",
+    "contact": "Contacto"
+  },
+  "HomePage": {
+    "heroTitle": "Tu Apple, como el primer día.",
+    "heroSubtitle": "Sabemos lo que tu equipo significa para ti. No es solo tecnología, es tu herramienta, tus recuerdos y tu conexión con el mundo. Déjalo en manos de quienes lo cuidan como tú.",
+    "ctaRepair": "Mas información",
+    "latestArrivals": "Novedades para ti",
+    "stats": {
+        "devices": "Dispositivos Reparados",
+        "clients": "Clientes Satisfechos",
+        "labs": "Laboratorios en Lima"
+    },
+    "service": {
+        "title": "Expertos en Microelectrónica",
+        "subtitle": "Reparaciones de alta complejidad que otros no pueden resolver."
+    },
+    "accessories": {
+        "title": "Accesorios Apple",
+        "description": "Encuentra los mejores accesorios para tus dispositivos",
+        "buy": "Comprar"
+    },
+    "contact": {
+        "title": "Visítanos hoy",
+        "hq1Title": "Sede San Isidro",
+        "hq1": "San Isidro: Calle Coronel Ernesto Odriozola 610",
+        "hq2Title": "Sede Miraflores",
+        "hq2": "Miraflores: Av. Arequipa 5090",
+        "hq3Title": "Sede Jesús María",
+        "hq3": "Jesús María: Av. Mariategui 134",
+        "whatsappTitle": "WhatsApp Business",
+        "phone": "Central: +51 987 654 321"
+    }
+  },
+  "Footer": {
+    "description": "Servicio técnico especializado Apple en Lima. Reparaciones de calidad con garantía.",
+    "links": "Enlaces",
+    "contact": "Contacto",
+    "address": "San Isidro, Lima - Perú",
+    "rights": "Todos los derechos reservados."
+  }
+}

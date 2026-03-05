@@ -1,0 +1,53 @@
+{
+  "Common": {
+    "addToCart": "Buy now",
+    "viewMore": "Explore",
+    "consult": "Consult",
+    "new": "New",
+    "offer": "Offer"
+  },
+  "Header": {
+    "home": "Home",
+    "service": "Technical Service",
+    "accessories": "Accessories",
+    "contact": "Contact"
+  },
+  "HomePage": {
+    "heroTitle": "Your Apple, like the first day.",
+    "heroSubtitle": "We know what your device means to you. It's not just technology, it's your tool, your memories, and your connection to the world. Leave it in the hands of those who care for it like you do.",
+    "ctaRepair": "More information",
+    "latestArrivals": "New for you",
+    "stats": {
+      "devices": "Repaired Devices",
+      "clients": "Satisfied Customers",
+      "labs": "Laboratories in Lima"
+    },
+    "service": {
+      "title": "Microelectronics Experts",
+      "subtitle": "High complexity repairs that others can't solve."
+    },
+    "accessories": {
+      "title": "Apple Accessories",
+      "description": "Find the bes accessories for you devices",
+      "buy": "Buy"
+    },
+    "contact": {
+      "title": "Visit us today",
+      "hq1Title": "San Isidro Office",
+      "hq1": "San Isidro: Coronel Ernesto Odriozola St 610",
+      "hq2Title": "Miraflores Office",
+      "hq2": "Miraflores: Arequipa Ave 5090",
+      "hq3Title": "Jesús María Office",
+      "hq3": "Jesús María: Mariategui Ave 134",
+      "whatsappTitle": "WhatsApp Business",
+      "phone": "Main: +51 987 654 321"
+    }
+  },
+  "Footer": {
+    "description": "Specialized Apple technical service in Lima. Quality repairs with warranty.",
+    "links": "Links",
+    "contact": "Contact",
+    "address": "San Isidro, Lima - Peru",
+    "rights": "All rights reserved."
+  }
+}
